@@ -1,18 +1,110 @@
-Chrome Extension Using KotlinJs
-================================
+Chrome Extension Kotlin Compiler Null Error Demo
+================================================
 
-A simple chrome extension to show current url, written with KotlinJs.
-
-Build:
+Run:
 
 ```
 ./gradlew compileKotlin2Js
-cd extension
-npm install
 ```
 
-Install:
+It reports error:
 
-Chrome -> `Extensions` -> Enable `Developer Mode` -> `Load unpacked` -> select the `extension` directory of this project.
+```
+./gradlew compileKotlin2Js
+w: Module "kotlin" is defined in more than one file
+e: java.lang.NullPointerException
+        at org.jetbrains.kotlin.com.google.gwt.dev.js.JsAstMapper.mapFunction(JsAstMapper.java:562)
+        at org.jetbrains.kotlin.js.parser.ParserUtilsKt.parseFunction(parserUtils.kt:74)
+        at org.jetbrains.kotlin.js.inline.FunctionReader.readFunctionFromSource(FunctionReader.kt:236)
+        at org.jetbrains.kotlin.js.inline.FunctionReader.readFunction(FunctionReader.kt:199)
+        at org.jetbrains.kotlin.js.inline.FunctionReader.access$readFunction(FunctionReader.kt:58)
+        at org.jetbrains.kotlin.js.inline.FunctionReader$functionCache$1.createValue(FunctionReader.kt:185)
+        at org.jetbrains.kotlin.js.inline.FunctionReader$functionCache$1.createValue(FunctionReader.kt:183)
+        at org.jetbrains.kotlin.com.intellij.util.containers.SLRUCache.get(SLRUCache.java:46)
+        at org.jetbrains.kotlin.js.inline.FunctionReader.get(FunctionReader.kt:189)
+        at org.jetbrains.kotlin.js.inline.context.FunctionContext.lookUpFunctionExternal(FunctionContext.kt:108)
+        at org.jetbrains.kotlin.js.inline.context.FunctionContext.getFunctionDefinitionImpl(FunctionContext.kt:76)
+        at org.jetbrains.kotlin.js.inline.context.FunctionContext.hasFunctionDefinition(FunctionContext.kt:39)
+        at org.jetbrains.kotlin.js.inline.JsInliner.hasToBeInlined(JsInliner.java:552)
+        at org.jetbrains.kotlin.js.inline.JsInliner.lambda$new$0(JsInliner.java:62)
+        at org.jetbrains.kotlin.js.inline.ExpressionDecomposerKt$match$visitor$1.doTraverse(ExpressionDecomposer.kt:480)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl$ListContext.traverse(JsVisitorWithContextImpl.java:88)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl.doAcceptList(JsVisitorWithContextImpl.java:177)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContext.acceptList(JsVisitorWithContext.java:48)
+        at org.jetbrains.kotlin.js.backend.ast.JsInvocation.traverse(JsInvocation.java:56)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl.doTraverse(JsVisitorWithContextImpl.java:187)
+        at org.jetbrains.kotlin.js.inline.ExpressionDecomposerKt$match$visitor$1.doTraverse(ExpressionDecomposer.kt:478)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl$NodeContext.traverse(JsVisitorWithContextImpl.java:136)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl.doAccept(JsVisitorWithContextImpl.java:147)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContext.accept(JsVisitorWithContext.java:38)
+        at org.jetbrains.kotlin.js.backend.ast.JsExpressionStatement.traverse(JsExpressionStatement.java:50)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl.doTraverse(JsVisitorWithContextImpl.java:187)
+        at org.jetbrains.kotlin.js.inline.ExpressionDecomposerKt$match$visitor$1.doTraverse(ExpressionDecomposer.kt:478)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl$NodeContext.traverse(JsVisitorWithContextImpl.java:136)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl.doAccept(JsVisitorWithContextImpl.java:147)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContext.accept(JsVisitorWithContext.java:38)
+        at org.jetbrains.kotlin.js.inline.ExpressionDecomposerKt.match(ExpressionDecomposer.kt:486)
+        at org.jetbrains.kotlin.js.inline.ExpressionDecomposerKt.access$match(ExpressionDecomposer.kt:1)
+        at org.jetbrains.kotlin.js.inline.ExpressionDecomposer$Companion.preserveEvaluationOrder(ExpressionDecomposer.kt:64)
+        at org.jetbrains.kotlin.js.inline.ExpressionDecomposer.preserveEvaluationOrder(ExpressionDecomposer.kt)
+        at org.jetbrains.kotlin.js.inline.JsInliner.doAcceptStatementList(JsInliner.java:323)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContext.acceptStatementList(JsVisitorWithContext.java:59)
+        at org.jetbrains.kotlin.js.backend.ast.JsBlock.traverse(JsBlock.java:63)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl.doTraverse(JsVisitorWithContextImpl.java:187)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl$ListContext.traverse(JsVisitorWithContextImpl.java:88)
+        at org.jetbrains.kotlin.js.inline.JsInliner.visit(JsInliner.java:247)
+        at org.jetbrains.kotlin.js.inline.JsInliner.visit(JsInliner.java:156)
+        at org.jetbrains.kotlin.js.backend.ast.JsFunction.traverse(JsFunction.java:87)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl.doTraverse(JsVisitorWithContextImpl.java:187)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl$NodeContext.traverse(JsVisitorWithContextImpl.java:136)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl.doAccept(JsVisitorWithContextImpl.java:147)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContext.accept(JsVisitorWithContext.java:38)
+        at org.jetbrains.kotlin.js.backend.ast.JsExpressionStatement.traverse(JsExpressionStatement.java:50)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl.doTraverse(JsVisitorWithContextImpl.java:187)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl$ListContext.traverse(JsVisitorWithContextImpl.java:88)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl.doAcceptStatementList(JsVisitorWithContextImpl.java:171)
+        at org.jetbrains.kotlin.js.inline.JsInliner.doAcceptStatementList(JsInliner.java:329)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContext.acceptStatementList(JsVisitorWithContext.java:59)
+        at org.jetbrains.kotlin.js.backend.ast.JsBlock.traverse(JsBlock.java:63)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl.doTraverse(JsVisitorWithContextImpl.java:187)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl$ListContext.traverse(JsVisitorWithContextImpl.java:88)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl.doAcceptStatementList(JsVisitorWithContextImpl.java:171)
+        at org.jetbrains.kotlin.js.inline.JsInliner.doAcceptStatementList(JsInliner.java:329)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContextImpl.doAcceptStatement(JsVisitorWithContextImpl.java:158)
+        at org.jetbrains.kotlin.js.backend.ast.JsVisitorWithContext.acceptStatement(JsVisitorWithContext.java:55)
+        at org.jetbrains.kotlin.js.inline.JsInliner.process(JsInliner.java:95)
+        at org.jetbrains.kotlin.js.facade.K2JSTranslator.translateUnits(K2JSTranslator.java:142)
+        at org.jetbrains.kotlin.js.facade.K2JSTranslator.translate(K2JSTranslator.java:96)
+        at org.jetbrains.kotlin.cli.js.K2JSCompiler.translate(K2JSCompiler.java:150)
+        at org.jetbrains.kotlin.cli.js.K2JSCompiler.doExecute(K2JSCompiler.java:278)
+        at org.jetbrains.kotlin.cli.js.K2JSCompiler.doExecute(K2JSCompiler.java:80)
+        at org.jetbrains.kotlin.cli.common.CLICompiler.execImpl(CLICompiler.java:95)
+        at org.jetbrains.kotlin.cli.common.CLICompiler.execImpl(CLICompiler.java:50)
+        at org.jetbrains.kotlin.cli.common.CLITool.exec(CLITool.kt:88)
+        at org.jetbrains.kotlin.daemon.CompileServiceImpl$compile$1$1$2.invoke(CompileServiceImpl.kt:405)
+        at org.jetbrains.kotlin.daemon.CompileServiceImpl$compile$1$1$2.invoke(CompileServiceImpl.kt:98)
+        at org.jetbrains.kotlin.daemon.CompileServiceImpl$doCompile$$inlined$ifAlive$lambda$2.invoke(CompileServiceImpl.kt:927)
+        at org.jetbrains.kotlin.daemon.CompileServiceImpl$doCompile$$inlined$ifAlive$lambda$2.invoke(CompileServiceImpl.kt:98)
+        at org.jetbrains.kotlin.daemon.common.DummyProfiler.withMeasure(PerfUtils.kt:137)
+        at org.jetbrains.kotlin.daemon.CompileServiceImpl.checkedCompile(CompileServiceImpl.kt:957)
+        at org.jetbrains.kotlin.daemon.CompileServiceImpl.doCompile(CompileServiceImpl.kt:926)
+        at org.jetbrains.kotlin.daemon.CompileServiceImpl.compile(CompileServiceImpl.kt:404)
+        at sun.reflect.GeneratedMethodAccessor82.invoke(Unknown Source)
+        at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+        at java.lang.reflect.Method.invoke(Method.java:498)
+        at sun.rmi.server.UnicastServerRef.dispatch(UnicastServerRef.java:361)
+        at sun.rmi.transport.Transport$1.run(Transport.java:200)
+        at sun.rmi.transport.Transport$1.run(Transport.java:197)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at sun.rmi.transport.Transport.serviceCall(Transport.java:196)
+        at sun.rmi.transport.tcp.TCPTransport.handleMessages(TCPTransport.java:568)
+        at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run0(TCPTransport.java:826)
+        at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.lambda$run$0(TCPTransport.java:683)
+        at java.security.AccessController.doPrivileged(Native Method)
+        at sun.rmi.transport.tcp.TCPTransport$ConnectionHandler.run(TCPTransport.java:682)
+        at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+        at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+        at java.lang.Thread.run(Thread.java:748)
 
-Open a page, and click the icon of this extension on toolbar, you will see a popup dialog with current url.
+> Task :compileKotlin2Js FAILED
+```
